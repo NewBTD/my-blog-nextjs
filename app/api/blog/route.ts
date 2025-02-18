@@ -1,5 +1,7 @@
 import { NextResponse,NextRequest } from "next/server";
 
+//Todo: Made GET,POST,PUT,DELETE routes
+
 export async function GET(){
     return NextResponse.json({message:'Hello from Next.js'})
 }
