@@ -3,7 +3,7 @@
 import { UserType } from "@/types/User";
 import User from "@/models/User";
 import { revalidatePath } from "next/cache";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export async function signUp(formData: FormData | UserType) {
   const name = formData.get("name") as string;
