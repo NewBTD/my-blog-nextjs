@@ -1,11 +1,10 @@
 "use server";
 
-import { UserType } from "@/types/User";
 import User from "@/models/User";
 import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 
-export async function signUp(formData: FormData | UserType) {
+export async function signUp(formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;

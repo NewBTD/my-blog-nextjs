@@ -31,8 +31,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new Error("Invalid credentials. not match");
         }
 
-        return { id: user._id, email: user.email };
+        // return { id: user._id, email: user.email };
+        return {...user, role: user.role as "admin" | "user"}
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = user.role as "admin" | "user" // Include user role in token
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.role = token.role as "admin" | "user"  // Attach role to session
+      }
+      return session;
+    },
+  },
+  pages: {
+    signIn: "/sign-in",
+  },
+  session: {
+    strategy: "jwt",
+  },
+  secret: process.env.AUTH_SECRET,
 });
