@@ -3,7 +3,7 @@
 import { UserType } from "@/types/User";
 import User from "@/models/User";
 import { revalidatePath } from "next/cache";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 
 export async function signUp(formData: FormData | UserType) {
   const name = formData.get("name") as string;
@@ -15,12 +15,12 @@ export async function signUp(formData: FormData | UserType) {
   const exisistingUser = await User.findOne({ email });
   if (exisistingUser) throw new Error("User already exists");
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  // const hashedPassword = await bcrypt.hash(password, 10);
 
   await User.insertOne({
     name,
     email,
-    password: hashedPassword,
+    password,
   });
 
   revalidatePath("/");

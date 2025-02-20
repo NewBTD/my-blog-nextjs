@@ -1,4 +1,6 @@
-import mongoose, {Mongoose} from "mongoose";
+export const runtime = "nodejs"; // ✅ บังคับให้ใช้ Node.js Runtime
+import mongoose, { Mongoose } from "mongoose";
+
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
@@ -7,38 +9,41 @@ if (!MONGODB_URI) {
 }
 
 interface MongooseCache {
-    conn: Mongoose | null;
-    promise: Promise<Mongoose> | null;
+  conn: Mongoose | null;
+  promise: Promise<Mongoose> | null;
 }
+
 declare global {
-    var mongoose: MongooseCache;
+    //eslint-disable-next-line no-var
+  var mongoose: MongooseCache | undefined;
 }
 
-let cached = global.mongoose;
+let cached: MongooseCache = global.mongoose || { conn: null, promise: null };
 
-if(!cached) {
-    cached = global.mongoose = {conn: null, promise: null}
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
 
-const dbConnect = async () => {
-    if(cached.conn) {
-        return cached.conn;
-    }
-
-    if(!cached.promise) {
-        cached.promise = mongoose
-        .connect(MONGODB_URI,{dbName:"BlogWebsite"})
-        .then((result)=>{
-            console.log("Connected to MongoDB");
-            return result;
-        })
-        .catch((error)=>{
-            console.error("Error connecting to MongoDB:", error);
-            throw error;
-        })
-    }
-    cached.conn = await cached.promise;
-
+const dbConnect = async (): Promise<Mongoose> => {
+  if (cached.conn) {
     return cached.conn;
-}
+  }
+
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .connect(MONGODB_URI, { dbName: "BlogWebsite" }) // ✅ ลบ useNewUrlParser และ useUnifiedTopology ออก
+      .then((result) => {
+        console.log("✅ Connected to MongoDB");
+        return result;
+      })
+      .catch((error) => {
+        console.error("❌ Error connecting to MongoDB:", error);
+        throw error;
+      });
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+};
+
 export default dbConnect;

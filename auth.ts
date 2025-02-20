@@ -1,7 +1,9 @@
+export const runtime = "nodejs"; // ✅ Ensure Node.js runtime
+
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import dbConnect from "./lib/mongoose";
 import User from "./models/User";
 
@@ -23,13 +25,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
         await dbConnect();
         user = await User.findOne({ email: credentials.email });
-        const isMatch = await bcrypt.compare(
-          credentials.password,
-          user.password
-        );
-        if (!user || !isMatch) {
-          throw new Error("Invalid credentials. not match");
-        }
+        // const isMatch = await bcrypt.compare(
+        //   credentials.password,
+        //   user.password
+        // );
+        // if (!user || !isMatch) {
+        //   throw new Error("Invalid credentials. not match");
+        // }
 
         return { id: user._id, email: user.email };
       },

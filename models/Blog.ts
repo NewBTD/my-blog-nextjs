@@ -1,5 +1,5 @@
+export const runtime = "nodejs"; // ✅ บังคับให้ใช้ Node.js Runtime
 import mongoose, { Schema, Document } from "mongoose";
-
 interface IBlog extends Document {
   title: string;
   content: string;

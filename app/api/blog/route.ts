@@ -1,3 +1,5 @@
+export const runtime = "nodejs"; // ✅ Ensure Node.js runtime
+
 import dbConnect from "@/lib/mongoose";
 import Blog from "@/models/Blog";
 import { NextResponse, NextRequest } from "next/server";
