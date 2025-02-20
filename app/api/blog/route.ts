@@ -2,7 +2,7 @@ import dbConnect from "@/lib/mongoose";
 import Blog from "@/models/Blog";
 import { NextResponse, NextRequest } from "next/server";
 
-//Todo: Made GET,POST,PUT,DELETE routes
+//Todo: Made PUT,DELETE routes
 
 export async function GET() {
   try {
