@@ -18,7 +18,7 @@ import Blog from "@/types/Blog";
 import React from "react";
 
 const BlogListTable = async () => {
-  const response = await fetch(`${process.env.VERCEL_BRANCH_URL}/api/blog`);
+  const response = await fetch(`https://${process.env.VERCEL_BRANCH_URL}/api/blog`);
   const blogs: Blog[] = await response.json();
   return (
     <Table>

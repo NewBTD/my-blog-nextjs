@@ -2,18 +2,15 @@ import React from "react";
 import Blog from "@/types/Blog";
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
-    let endpoint
-    if(process.env.VERCEL === "1"){
-        endpoint = process.env.VERCEL_BRANCH_URL;
-    }
-    else{
-        endpoint = process.env.NEXT_PUBLIC_BASE_URL;
-    }
+  let endpoint;
+  if (process.env.VERCEL === "1") {
+    endpoint = "https://" + process.env.VERCEL_BRANCH_URL;
+  } else {
+    endpoint = process.env.NEXT_PUBLIC_BASE_URL;
+  }
   try {
     const { slug } = await params;
-    const response = await fetch(
-      `${endpoint}/api/blog/${slug}`
-    );
+    const response = await fetch(`${endpoint}/api/blog/${slug}`);
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(
