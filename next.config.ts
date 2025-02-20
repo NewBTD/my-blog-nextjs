@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    esmExternals: "loose", // <-- add this
+  experimental: {    
     serverComponentsExternalPackages: ["mongoose"] // <-- and this
   },
   // and the following to enable top-level await support for Webpack

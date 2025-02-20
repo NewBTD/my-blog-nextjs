@@ -6,7 +6,7 @@ import { Bookmark, Ellipsis, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
 const BlogList = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`);
+  const response = await fetch(`${process.env.VERCEL_BRANCH_URL}/api/blog`);
   const blogs: Blog[] = await response.json();
 
   return (
