@@ -10,7 +10,7 @@ const NavBar = async () => {
   return (
     <nav className="container mx-auto flex gap-4 justify-between items-center p-4 drop-shadow-lg">
       <Link href="/">
-        MyLogo
+        <>MyLogo</>
       </Link>
       <ul className="flex items-center gap-4">
         <Link href="/admin/create-blog">Create</Link>
