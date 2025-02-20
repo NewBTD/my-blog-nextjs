@@ -7,14 +7,16 @@ import LogOut from "./LogOut";
 
 const NavBar = async () => {
   const session = await auth();
-
   return (
     <nav className="container mx-auto flex gap-4 justify-between items-center p-4 drop-shadow-lg">
-      <div>MyLogo</div>
+      <Link href="/">
+        <>MyLogo</>
+      </Link>
       <ul className="flex items-center gap-4">
-        <Link href="/">Home</Link>
-        <Link href="/About">About</Link>
-        <Link href="/Blogs">Blogs</Link>
+        <Link href="/admin/create-blog">Create</Link>
+        <Link href="/about">About</Link>
+        <Link href="/blogs">Blogs</Link>
+        <Link href="/sign-up">Sign Up</Link>
         <ThemeButton></ThemeButton>
         {session ? (
           <LogOut></LogOut>
