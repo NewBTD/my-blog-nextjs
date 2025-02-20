@@ -6,7 +6,8 @@ import { revalidatePath } from "next/cache";
 
 export async function createBlog(formData: FormData) {
   const session = await auth();
-  if(!session?.user) throw new Error("You are not authorized to create a blog");
+  if (!session?.user)
+    throw new Error("You are not authorized to create a blog");
   const title = formData.get("title") as string;
   const content = formData.get("content") as string;
   const slug = formData.get("slug") as string;
@@ -23,5 +24,6 @@ export async function createBlog(formData: FormData) {
     published: true,
     tags: ["", ""],
   });
+
   revalidatePath("/admin/dashboard");
 }
