@@ -44,6 +44,19 @@ const Page = () => {
             required
           />
         </div>
+        <div>
+          <label htmlFor="slug" className="block mb-2">
+            Slug
+          </label>
+          <input
+            type="text"
+            id="slug"
+            name="slug"
+            className="w-full p-2 border rounded"
+            placeholder="your-post-url-slug"
+            required
+          />
+        </div>
 
         <div>
           <label htmlFor="author" className="block mb-2">

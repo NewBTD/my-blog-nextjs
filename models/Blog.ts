@@ -4,6 +4,7 @@ interface IBlog extends Document {
   title: string;
   content: string;
   author: string;
+  slug: string;
   createdAt: Date;
   updatedAt: Date;
   published: boolean;
@@ -23,6 +24,11 @@ const BlogSchema = new Schema<IBlog>(
     author: {
       type: String,
       required: true,
+    },
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
     },
     createdAt: {
       type: Date,
