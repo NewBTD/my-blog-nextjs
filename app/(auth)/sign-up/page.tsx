@@ -15,12 +15,13 @@ const Page = () => {
     }
   };
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form action={handleSignUp}>
+    <div className="container mx-auto flex items-center justify-center flex-col">
+      <h1 className="text-2xl pb-8">Sign Up</h1>
+      <form className="flex flex-col gap-4 p-4 rounded" action={handleSignUp}>
         <div>
-          <label htmlFor="name">Name</label>
+          
           <input
+            className="border-2 border-gray-300 p-2 rounded-md w-[280px]"
             type="text"
             id="name"
             name="name"
@@ -29,8 +30,9 @@ const Page = () => {
           />
         </div>
         <div>
-          <label htmlFor="email">Email</label>
+          
           <input
+            className="border-2 border-gray-300 p-2 rounded-md w-[280px]"
             type="email"
             id="email"
             name="email"
@@ -39,8 +41,9 @@ const Page = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          
           <input
+            className="border-2 border-gray-300 p-2 rounded-md w-[280px]"
             type="password"
             id="password"
             name="password"
@@ -49,8 +52,9 @@ const Page = () => {
           />
         </div>
         <div>
-          <label htmlFor="confirmedPassword">confirmedPassword</label>
+          
           <input
+            className="border-2 border-gray-300 p-2 rounded-md w-[280px]"
             type="password"
             id="confirmedPassword"
             name="confirmedPassword"
