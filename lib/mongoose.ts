@@ -11,6 +11,7 @@ interface MongooseCache {
     promise: Promise<Mongoose> | null;
 }
 declare global {
+    // eslint-disable-next-line no-var
     var mongoose: MongooseCache;
 }
 
