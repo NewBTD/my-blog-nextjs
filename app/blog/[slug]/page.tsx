@@ -4,7 +4,7 @@ import Blog from "@/types/Blog";
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   let endpoint;
   if (process.env.VERCEL === "1") {
-    endpoint = "https://" + process.env.VERCEL_BRANCH_URL;
+    endpoint = "https://" + process.env.NEXT_PUBLIC_BASE_URL;
   } else {
     endpoint = process.env.NEXT_PUBLIC_BASE_URL;
   }

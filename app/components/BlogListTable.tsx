@@ -18,11 +18,11 @@ import Blog from "@/types/Blog";
 import React from "react";
 
 const BlogListTable = async () => {
-  const response = await fetch(`https://${process.env.VERCEL_BRANCH_URL}/api/blog`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`);
   const blogs: Blog[] = await response.json();
   return (
-    <Table>
-      <TableHeader>
+    <Table className="w-[100%]">
+      <TableHeader className="">
         <TableRow>
           <TableHead>Blog Title</TableHead>
           <TableHead>Author</TableHead>
@@ -59,14 +59,6 @@ const BlogListTable = async () => {
             </TableCell>
           </TableRow>
         ))}
-        <TableRow className="">
-          <TableCell className=" py-4">
-            10 วิธีในการดูแลรักษาสุขภาพหน้า
-          </TableCell>
-          <TableCell className=" py-4">Thanawat.K</TableCell>
-          <TableCell className=" py-4">19-02-2025</TableCell>
-          <TableCell className=" py-4">True</TableCell>
-        </TableRow>
       </TableBody>
     </Table>
   );
