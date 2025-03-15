@@ -82,7 +82,12 @@ const BlogCards = () => {
             key={index}
             variant={selectedTag === tag ? "default" : "outline"}
             onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-            className={`radius-full rounded-3xl ${selectedTag === tag ? "!bg-[#403D3D] !text-[#FCFCFC]" : "!bg-[#1F1D1D] !text-[#D2CFD0]"}`}          >
+            className={`radius-full rounded-3xl ${
+              selectedTag === tag
+                ? "!bg-[#403D3D] !text-[#FCFCFC]"
+                : "!bg-[#1F1D1D] !text-[#D2CFD0]"
+            }`}
+          >
             {tag}
           </Button>
         ))}
@@ -90,38 +95,42 @@ const BlogCards = () => {
 
       {/* Blog Cards */}
       <div className="grid gap-6">
-        {filteredBlogs.map((blog: IBlog) => (
-          <div
-            key={blog._id?.toString()}
-            className="grid grid-cols-12 items-center gap-4"
-          >
-            <div className="col-span-4">
-              <Image
-                src={`https://picsum.photos/id/1/367/267`}
-                alt={blog.title}
-                width={367}
-                height={267}
-                className="rounded-lg"
-              />
-            </div>
-            <div className="col-span-8 grid grid-cols-8 gap-2">
-              <div className="col-span-7">
-                <h1 className="text-xl font-bold">{blog.title}</h1>
-                <p className="text-gray-400 truncate">{blog.content}</p>
-                <div className="flex gap-1 mt-2 items-center text-sm">
-                  <ThumbsUp className="size-4"></ThumbsUp>
-                  <span>12</span>
-                  <MessageCircle className="size-4"></MessageCircle>
-                  <span>3</span>
+        {loading ? (
+          <p>Loading...</p> // Display loading message while fetching data
+        ) : (
+          filteredBlogs.map((blog: IBlog) => (
+            <div
+              key={blog._id?.toString()}
+              className="grid grid-cols-12 items-center gap-4"
+            >
+              <div className="col-span-4">
+                <Image
+                  src={`https://picsum.photos/id/1/367/267`}
+                  alt={blog.title}
+                  width={367}
+                  height={267}
+                  className="rounded-lg"
+                />
+              </div>
+              <div className="col-span-8 grid grid-cols-8 gap-2">
+                <div className="col-span-7">
+                  <h1 className="text-xl font-bold">{blog.title}</h1>
+                  <p className="text-gray-400 truncate">{blog.content}</p>
+                  <div className="flex gap-1 mt-2 items-center text-sm">
+                    <ThumbsUp className="size-4"></ThumbsUp>
+                    <span>12</span>
+                    <MessageCircle className="size-4"></MessageCircle>
+                    <span>3</span>
+                  </div>
+                </div>
+                <div className="col-span-1 inline-flex ">
+                  <Bookmark className="size-6 cursor-pointer"></Bookmark>
+                  <Ellipsis className="size-6 cursor-pointer"></Ellipsis>
                 </div>
               </div>
-              <div className="col-span-1 inline-flex ">
-                <Bookmark className="size-6 cursor-pointer"></Bookmark>
-                <Ellipsis className="size-6 cursor-pointer"></Ellipsis>
-              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
