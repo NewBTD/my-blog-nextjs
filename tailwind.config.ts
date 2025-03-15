@@ -9,9 +9,14 @@ export default {
   ],
   theme: {
   	extend: {
+		backgroundImage: {
+			"gradient": "linear-gradient(91.07deg, rgba(91, 88, 88, 0.1) 0.16%, rgba(255, 250, 196, 0.1) 98.21%)",
+		  },	
   		colors: {
   			background: 'var(--background)',
-  			foreground: 'var(--foreground)'
+  			foreground: 'var(--foreground)',
+			// blackGradient: "linear-gradient(91.07deg, rgba(91, 88, 88, 0.1) 0.16%)",
+			// lightGradient: "rgba(255, 250, 196, 0.1) 98.21%)"
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
