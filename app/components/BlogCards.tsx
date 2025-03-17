@@ -68,7 +68,7 @@ const BlogCards = () => {
       {/* Search Input */}
       <div className="flex items-center">
         <Input
-          placeholder="Search blog title..."
+          placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full bg-gradient"
@@ -82,7 +82,7 @@ const BlogCards = () => {
             key={index}
             variant={selectedTag === tag ? "default" : "outline"}
             onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-            className={`radius-full rounded-3xl ${
+            className={`radius-full rounded-3xl font-semibold ${
               selectedTag === tag
                 ? "!bg-[#403D3D] !text-[#FCFCFC]"
                 : "!bg-[#1F1D1D] !text-[#D2CFD0]"

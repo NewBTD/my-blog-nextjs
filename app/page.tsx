@@ -1,8 +1,11 @@
 import { Medal } from "lucide-react";
 import BlogCards from "./components/BlogCards";
 import RecommendBlogs from "./components/RecommendBlogs";
+import NavBar from "./components/NavBar";
 export default function Home() {
   return (
+    <>
+    <NavBar></NavBar>
     <div className="container mx-auto p-4 grid grid-cols-12 mt-8">
       <div className="col-span-8 border-r border-[#403D3D] px-8">
         <BlogCards></BlogCards>
@@ -14,5 +17,6 @@ export default function Home() {
         </h2>
       </div>
     </div>
+    </>
   );
 }
